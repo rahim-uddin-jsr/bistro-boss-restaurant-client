@@ -8,7 +8,13 @@ import bannerImg5 from "../../assets/home/05.png";
 import bannerImg6 from "../../assets/home/06.png";
 const Banner = () => {
   return (
-    <Carousel showArrows={true}>
+    <Carousel
+      autoPlay={true}
+      infiniteLoop={true}
+      emulateTouch={true}
+      showArrows={true}
+      >
+          
       <div>
         <img src={bannerImg1} />
       </div>
@@ -23,11 +29,9 @@ const Banner = () => {
       </div>
       <div>
         <img src={bannerImg5} />
-        <p className="legend">Legend 5</p>
       </div>
       <div>
         <img src={bannerImg6} />
-        <p className="legend">Legend 6</p>
       </div>
     </Carousel>
   );
