@@ -1,6 +1,5 @@
 import "@smastrom/react-rating/style.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SectionTitle from "../../Conponents/SectionTitle/SectionTitle";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -9,6 +8,7 @@ import "swiper/css/navigation";
 import { Rating } from "@smastrom/react-rating";
 import { useEffect, useState } from "react";
 import { Navigation } from "swiper";
+import SectionTitle from "../../../Conponents/SectionTitle/SectionTitle";
 const Testimonials = () => {
   const [reviews, setReviews] = useState();
   useEffect(() => {

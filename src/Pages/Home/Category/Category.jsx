@@ -7,12 +7,12 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper";
 
-import slideImg1 from "../../assets/home/slide1.jpg";
-import slideImg2 from "../../assets/home/slide2.jpg";
-import slideImg3 from "../../assets/home/slide3.jpg";
-import slideImg4 from "../../assets/home/slide4.jpg";
-import slideImg5 from "../../assets/home/slide5.jpg";
-import SectionTitle from "../../Conponents/SectionTitle/SectionTitle";
+import slideImg1 from "../../../assets/home/slide1.jpg";
+import slideImg2 from "../../../assets/home/slide2.jpg";
+import slideImg3 from "../../../assets/home/slide3.jpg";
+import slideImg4 from "../../../assets/home/slide4.jpg";
+import slideImg5 from "../../../assets/home/slide5.jpg";
+import SectionTitle from "../../../Conponents/SectionTitle/SectionTitle";
 const Category = () => {
   return (
     <>
