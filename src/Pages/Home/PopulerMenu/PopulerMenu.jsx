@@ -1,27 +1,24 @@
-import { useEffect, useState } from "react";
 import SectionTitle from "../../../Conponents/SectionTitle/SectionTitle";
-import MenuItem from "../../../Shared/MenuItem/MenuItem";
-
+import useMenu from "../../../hooks/UseMenu/useMenu";
+import MenuCategory from "../../MenuPage/MenuCategory/MenuCategory";
 
 const PopulerMenu = () => {
-  const [populerMenu, setPopularMenu] = useState([]);
-  useEffect(() => {
-    fetch("/menu.json").then((res) =>
-      res.json().then((data) => {
-        const popularMenus = data.filter((menu) => menu.category === "popular");
-        setPopularMenu(popularMenus);
-      })
-    );
-  }, []);
-  console.log(populerMenu);
+  const [menu] = useMenu();
+
+  const popularMenus = menu.filter((item) => item.category === "popular");
+
   return (
-    <section>
+    <section className="my-12">
       <SectionTitle heading={"From Our Menu"} subHeading={"Popular Items"} />
-      <div className="grid md:grid-cols-2 gap-10">
-        {populerMenu.map((item) => (
-          <MenuItem key={item._id} item={item} />
+        <MenuCategory
+          // key={item._id}
+          menu={popularMenus}
+          btnText={"View Full  Menu"}
+        />
+      {/* <div className="grid md:grid-cols-2 gap-10">
+        {popularMenus.map((item) => (
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };
