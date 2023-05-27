@@ -30,12 +30,17 @@ const MenuPage = () => {
         SubTitle={"WOULD YOU LIKE TO TRY A DISH?"}
       />
       <SectionTitle heading={"TODAY'S OFFER"} subHeading={"---Don't miss---"} />
-      <MenuCategory menu={offered} btnText={"ORDER YOUR FAVOURITE FOOD "} />
+      <MenuCategory
+        menu={offered}
+        btnText={"ORDER YOUR FAVOURITE FOOD "}
+        category={"offered"}
+      />
       {/* desert */}
       <MenuCategory
         coverImg={desertBG}
         menu={deserts}
         btnText={"ORDER YOUR FAVOURITE FOOD"}
+        category={"dessert"}
         coverTitle={"Desert"}
         coverSubTitle={
           "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
@@ -48,6 +53,7 @@ const MenuPage = () => {
         menu={pizza}
         btnText={"ORDER YOUR FAVORITE FOOD"}
         coverTitle={"PIZZA"}
+        category={"pizza"}
         coverSubTitle={
           "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
@@ -58,6 +64,7 @@ const MenuPage = () => {
         coverImg={pizzaBG}
         menu={salad}
         btnText={"ORDER YOUR FAVORITE FOOD"}
+        category={"salad"}
         coverTitle={"SALAD"}
         coverSubTitle={
           "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
@@ -69,6 +76,7 @@ const MenuPage = () => {
         coverImg={soupBG}
         menu={soup}
         btnText={"ORDER YOUR FAVORITE FOOD"}
+        category={"soup"}
         coverTitle={"SOUP"}
         coverSubTitle={
           "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."

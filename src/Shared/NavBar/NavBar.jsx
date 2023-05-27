@@ -14,7 +14,9 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
-        <a>Item 3</a>
+        <NavLink to="/order" className="">
+          Order Food
+        </NavLink>
       </li>
     </>
   );

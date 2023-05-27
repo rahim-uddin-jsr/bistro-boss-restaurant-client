@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Cover from "../../../Shared/Cover/Cover";
 import MenuItem from "../../../Shared/MenuItem/MenuItem";
 
@@ -8,6 +9,7 @@ const MenuCategory = ({
   coverTitle,
   coverSubTitle,
   coverHeight,
+  category,
 }) => {
   return (
     <div className="my-24">
@@ -25,9 +27,11 @@ const MenuCategory = ({
         ))}
       </div>
       {btnText && (
-        <button className="btn btn-ghost border-0 border-b-2 border-black">
-          {btnText}
-        </button>
+        <Link to={`/order/${category}`}>
+          <button className="btn btn-ghost border-0 border-b-2 border-black">
+            {btnText}
+          </button>
+        </Link>
       )}
     </div>
   );

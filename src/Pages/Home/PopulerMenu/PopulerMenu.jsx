@@ -10,11 +10,12 @@ const PopulerMenu = () => {
   return (
     <section className="my-12">
       <SectionTitle heading={"From Our Menu"} subHeading={"Popular Items"} />
-        <MenuCategory
-          // key={item._id}
-          menu={popularMenus}
-          btnText={"View Full  Menu"}
-        />
+      <MenuCategory
+        // key={item._id}
+        menu={popularMenus}
+        btnText={"View Full  Menu"}
+        category={"popular"}
+      />
       {/* <div className="grid md:grid-cols-2 gap-10">
         {popularMenus.map((item) => (
         ))}
