@@ -17,7 +17,7 @@ const NavBar = () => {
       </li>
       <li tabIndex={0}>
         <NavLink to="/menu" className="">
-          Parent
+          Menu
         </NavLink>
       </li>
       <li>
