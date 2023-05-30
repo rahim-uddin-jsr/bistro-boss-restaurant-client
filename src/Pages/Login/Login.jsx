@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   LoadCanvasTemplate,
   loadCaptchaEnginge,
@@ -96,6 +97,12 @@ const Login = () => {
                 value={"Login"}
               />
             </div>
+            <span>
+              don't have any account? Please{" "}
+              <Link className="link" to={"/register"}>
+                Register
+              </Link>
+            </span>
           </div>
         </form>
       </div>
