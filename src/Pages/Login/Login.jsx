@@ -1,15 +1,21 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   LoadCanvasTemplate,
   loadCaptchaEnginge,
   validateCaptcha,
 } from "react-simple-captcha";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { user, loading, loginWithEmailPassword } = useContext(AuthContext);
   const captchaRef = useRef(null);
   const [isDisable, setIsDisable] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state.from.pathname || "/";
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -19,6 +25,22 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    loginWithEmailPassword(email, password)
+      .then((result) => {
+        Swal.fire({
+          title: "Login Successful",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        navigate(from);
+        console.log(result);
+      })
+      .catch();
   };
   const handleCaptchaValidate = () => {
     const user_captcha_value = captchaRef.current.value;
@@ -28,10 +50,12 @@ const Login = () => {
       setIsDisable(true);
     }
   };
-  const { user, loading } = useContext(AuthContext);
   console.log(user, loading);
   return (
     <div className="hero min-h-screen bg-base-200">
+      <Helmet>
+        <title>Bistro Boss || Sign in</title>
+      </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:w-1/2 lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -85,7 +109,8 @@ const Login = () => {
             </div>
             <button
               onClick={handleCaptchaValidate}
-              className="btn btn-outline btn-sm"
+              type="button"
+              className="btn  btn-outline btn-sm"
             >
               validate
             </button>
@@ -98,7 +123,7 @@ const Login = () => {
               />
             </div>
             <span>
-              don't have any account? Please{" "}
+              {" don't have any account? Please "}
               <Link className="link" to={"/register"}>
                 Register
               </Link>
