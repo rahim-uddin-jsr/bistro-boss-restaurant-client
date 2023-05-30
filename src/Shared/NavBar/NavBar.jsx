@@ -1,7 +1,8 @@
 import { useContext } from "react";
+import { FaShoppingBasket } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
-
+import useCart from "../../hooks/UseMenu/useCart";
 const NavBar = () => {
   const { logout, user } = useContext(AuthContext);
   const handleLogout = () => {
@@ -43,6 +44,7 @@ const NavBar = () => {
       )}
     </>
   );
+  const [cart] = useCart();
   return (
     <div className="navbar bg-base-300 bg-opacity-5 text-white fixed z-10">
       <div className="navbar-start">
@@ -83,6 +85,12 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
+        <button className="btn btn-ghost relative mr-4">
+          <FaShoppingBasket className="text-3xl" />
+          <div className="badge -top-5 -right-2 absolute mt-2">
+            +{cart ? cart?.length : "0"}
+          </div>
+        </button>
         <a className="btn">Get started</a>
       </div>
     </div>

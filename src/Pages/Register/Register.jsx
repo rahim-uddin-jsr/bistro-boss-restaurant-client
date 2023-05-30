@@ -39,7 +39,7 @@ const Register = () => {
             navigate(from);
           })
           .catch((err) => {
-            // alert(err.massage);
+            alert(err.massage);
           });
       })
       .catch();
