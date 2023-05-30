@@ -15,6 +15,7 @@ const Home = () => {
       </Helmet>
       <Banner />
       <div className="max-w-7xl mx-auto">
+        
         <Category />
         <PopulerMenu />
       </div>

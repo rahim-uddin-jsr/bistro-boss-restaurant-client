@@ -7,16 +7,19 @@ import useMenu from "../../hooks/UseMenu/useMenu";
 import Cover from "../../Shared/Cover/Cover";
 import TabItem from "../MenuPage/TabItem/TabItem";
 const Order = () => {
-  const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
+  const categories = ["salad", "pizza", "soup", "dessert", "drinks", "offered"];
   const { category } = useParams();
-  const initialIndex = categories.indexOf(category);
+  const initialIndex = categories.indexOf(category || "salad");
   const [tabIndex, setTabIndex] = useState(initialIndex);
   const [menu] = useMenu();
   const soup = menu.filter((singleMenu) => singleMenu.category === "soup");
   const salad = menu.filter((singleMenu) => singleMenu.category === "salad");
   const pizza = menu.filter((singleMenu) => singleMenu.category === "pizza");
   const desert = menu.filter((singleMenu) => singleMenu.category === "dessert");
-  const drinks = menu.filter((singleMenu) => singleMenu.category === "drinks");
+  const drinks = menu.filter((singleMenu) => singleMenu.category === "offered");
+  const offered = menu.filter(
+    (singleMenu) => singleMenu.category === "popular"
+  );
 
   return (
     <div>
@@ -33,6 +36,7 @@ const Order = () => {
             <Tab>Soup</Tab>
             <Tab>Desert</Tab>
             <Tab>Drinks</Tab>
+            <Tab>Popular</Tab>
           </TabList>
 
           <TabPanel>
@@ -49,6 +53,9 @@ const Order = () => {
           </TabPanel>
           <TabPanel>
             <TabItem items={drinks} />
+          </TabPanel>
+          <TabPanel>
+            <TabItem items={offered} />
           </TabPanel>
         </Tabs>
       </div>

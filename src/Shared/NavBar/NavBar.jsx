@@ -18,6 +18,16 @@ const NavBar = () => {
           Order Food
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/login" className="">
+          Login
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/register" className="">
+          Register
+        </NavLink>
+      </li>
     </>
   );
   return (
