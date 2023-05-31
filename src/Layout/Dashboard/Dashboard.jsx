@@ -1,6 +1,8 @@
 import {
+  FaBars,
   FaCalendarAlt,
   FaHome,
+  FaShoppingBag,
   FaShoppingCart,
   FaWallet,
 } from "react-icons/fa";
@@ -22,7 +24,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+        <ul className="menu p-4 w-80 bg-[#D1A054] text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li>
             <NavLink to={"dashboard"}>
@@ -30,12 +32,12 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard"}>
+            <NavLink to={"reservation"}>
               <FaCalendarAlt></FaCalendarAlt> Reservation
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard"}>
+            <NavLink to={"payment-history"}>
               <FaWallet></FaWallet> Payment History
             </NavLink>
           </li>
@@ -52,12 +54,12 @@ const Dashboard = () => {
           </li>
           <li tabIndex={0}>
             <NavLink to="/menu" className="">
-              Menu
+              <FaBars /> Menu
             </NavLink>
           </li>
           <li>
             <NavLink to="/order" className="">
-              Order Food
+              <FaShoppingBag /> Order Food
             </NavLink>
           </li>
         </ul>

@@ -38,6 +38,13 @@ const NavBar = () => {
         </li>
       )}
       {user && (
+        <li>
+          <NavLink to="/dashboard" className="">
+            Dashboard
+          </NavLink>
+        </li>
+      )}
+      {user && (
         <button className="btn btn-ghost" onClick={handleLogout}>
           Logout
         </button>
