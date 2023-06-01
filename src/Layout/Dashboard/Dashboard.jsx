@@ -10,6 +10,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../../hooks/UseMenu/useCart";
 const Dashboard = () => {
   const [cart] = useCart();
+  const isAdmin = true;
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -27,27 +28,64 @@ const Dashboard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 bg-[#D1A054] text-base-content">
           {/* <!-- Sidebar content here --> */}
-          <li>
-            <NavLink to={"dashboard"}>
-              <FaHome></FaHome> User Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={"reservation"}>
-              <FaCalendarAlt></FaCalendarAlt> Reservation
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={"payment-history"}>
-              <FaWallet></FaWallet> Payment History
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={"myCart"} className={" gap-2"}>
-              <FaShoppingCart /> My Cart
-              <div className="badge badge-secondary">+{cart?.length || 0}</div>
-            </NavLink>
-          </li>
+
+          {isAdmin ? (
+            <>
+              {" "}
+              <li>
+                <NavLink to={"dashboard"}>
+                  <FaHome></FaHome> Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"reservation"}>
+                  <FaCalendarAlt></FaCalendarAlt>Add Item
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"payment-history"}>
+                  <FaWallet></FaWallet>Manage Item
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"payment-history"}>
+                  <FaWallet></FaWallet>Manage Booking
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"allUser"}>
+                  <FaWallet></FaWallet>All User
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              {" "}
+              <li>
+                <NavLink to={"dashboard"}>
+                  <FaHome></FaHome> User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"reservation"}>
+                  <FaCalendarAlt></FaCalendarAlt> Reservation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"payment-history"}>
+                  <FaWallet></FaWallet> Payment History
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"myCart"} className={" gap-2"}>
+                  <FaShoppingCart /> My Cart
+                  <div className="badge badge-secondary">
+                    +{cart?.length || 0}
+                  </div>
+                </NavLink>
+              </li>
+            </>
+          )}
           <div className="divider"></div>
           <li>
             <NavLink to={"/"}>
