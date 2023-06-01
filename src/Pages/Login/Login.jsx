@@ -8,6 +8,7 @@ import {
 } from "react-simple-captcha";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { user, loading, loginWithEmailPassword } = useContext(AuthContext);
@@ -29,13 +30,11 @@ const Login = () => {
     loginWithEmailPassword(email, password)
       .then((result) => {
         Swal.fire({
-          title: "Login Successful",
-          showClass: {
-            popup: "animate__animated animate__fadeInDown",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutUp",
-          },
+          position: "top-center",
+          icon: "success",
+          title: "Login success",
+          showConfirmButton: false,
+          timer: 1500,
         });
         navigate(from);
         console.log(result);
@@ -128,6 +127,7 @@ const Login = () => {
                 Register
               </Link>
             </span>
+          <SocialLogin />
           </div>
         </form>
       </div>

@@ -45,7 +45,13 @@ const FoodCard = ({ item }) => {
       .then((data) => {
         if (data.insertedId) {
           refetch();
-          Swal.fire("Added", "Item has been added to cart.", "success");
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Item has been added to cart.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };

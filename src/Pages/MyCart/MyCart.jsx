@@ -35,7 +35,7 @@ const MyCart = () => {
     });
   };
   return (
-    <div>
+    <div className="w-full">
       <div className="flex justify-evenly">
         <h2 className="text-3xl">Total Item: {cart?.length}</h2>
         <h2 className="text-3xl">Total Price: {totalPrice}</h2>

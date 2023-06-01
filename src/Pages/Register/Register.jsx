@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Register = () => {
   const location = useLocation();
@@ -12,6 +13,7 @@ const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const { registerUserWithEmail, updateUserProfile } = useContext(AuthContext);
@@ -20,23 +22,35 @@ const Register = () => {
     const photoURL = e.photoURL;
     const email = e.email;
     const password = e.password;
-    console.log();
 
     registerUserWithEmail(email, password)
       .then((result) => {
         console.log(result.user);
         updateUserProfile({ displayName: name, photoURL })
           .then(() => {
-            Swal.fire({
-              title: "Registration Successful",
-              showClass: {
-                popup: "animate__animated animate__fadeInDown",
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
               },
-              hideClass: {
-                popup: "animate__animated animate__fadeOutUp",
-              },
-            });
-            navigate(from);
+              body: JSON.stringify({ name, email }),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  reset();
+                  navigate(from);
+                  Swal.fire({
+                    title: "Registration Successful",
+                    showClass: {
+                      popup: "animate__animated animate__fadeInDown",
+                    },
+                    hideClass: {
+                      popup: "animate__animated animate__fadeOutUp",
+                    },
+                  });
+                }
+              });
           })
           .catch((err) => {
             alert(err.massage);
@@ -151,6 +165,7 @@ const Register = () => {
                 Login
               </Link>
             </span>
+            <SocialLogin />
           </div>
         </form>
       </div>
